@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +13,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::get();
+        
+        return view('product.index', compact('product'));
     }
 
     /**
@@ -20,7 +23,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $supplier = Supplier::get();
+
+        return view('product.create', compact('supplier'));
     }
 
     /**
@@ -28,7 +33,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create($request->toArray());
+
+        return redirect()->action([ ProductController::class, 'index']);
     }
 
     /**
@@ -36,7 +43,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('product.show', ['product']);
     }
 
     /**
@@ -44,7 +51,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product.update', ['product']);
     }
 
     /**
@@ -52,14 +59,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // Product::update($request)
+        //        ->where(.....);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(int $id)
     {
-        //
+        Product::find($id)->delete();
+    }
+
+    public function bundling()
+    {
+        ///
     }
 }

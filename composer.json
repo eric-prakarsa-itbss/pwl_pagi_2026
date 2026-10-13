@@ -7,8 +7,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "illuminate/http": "*",
         "laravel/framework": "^13.17",
-        "laravel/tinker": "^3.0"
+        "laravel/tinker": "^3.0",
+        "owenvoke/blade-fontawesome": "^3.3",
+        "spatie/laravel-html": "^3.13"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
